@@ -18,7 +18,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "jsn",
       "kebab-case"
     ],
     "import-blacklist": [
