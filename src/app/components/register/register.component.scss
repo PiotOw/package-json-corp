@@ -75,3 +75,14 @@ jsn-card {
 	color: #FF5766;
 	font-weight: 800;
 }
+
+::ng-deep .tooltip {
+	white-space: pre-line;
+	font-size: 12px;
+}
+
+::ng-deep .red-tooltip {
+	white-space: pre-line;
+	font-size: 12px;
+	background: red;
+}

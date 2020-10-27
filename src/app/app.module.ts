@@ -12,7 +12,7 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatProgressSpinnerModule, MatRippleModule
+    MatProgressSpinnerModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -36,7 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
         MatInputModule,
         MatRippleModule,
         HttpClientModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTooltipModule
     ],
     providers: [],
     bootstrap: [AppComponent]

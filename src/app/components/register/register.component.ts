@@ -10,6 +10,8 @@ import {AvailabilityStatus} from '../../domain/user/models/availability-status.e
 })
 export class RegisterComponent implements OnInit {
 
+    AvailabilityStatus = AvailabilityStatus;
+
     availabilityStatus: AvailabilityStatus = AvailabilityStatus.WAITING;
 
     fileInputConfig = {
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit {
     // TODO: Validators and errors dictionary
     registerUserForm = new FormGroup({
         firstname: new FormControl('', Validators.required),
-        lastname: new FormControl('', Validators.required),
+        lastname: new FormControl('', [Validators.required, Validators.minLength(9), Validators.email]),
         password: new FormControl('', Validators.required),
         passwordConfirmation: new FormControl('', Validators.required),
         username: new FormControl('', Validators.required),
@@ -32,7 +34,15 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
+        // console.log(this.registerUserForm.controls);
+
+        console.log(Object.keys(this.registerUserForm.controls)[0]);
+        // Object.keys(this.registerUserForm.controls).find(name => thi
+        // s.registerUserForm.controls[1] === this.registerUserForm.controls[name]) || null;
+
         this.registerUserForm.valueChanges.subscribe(values => {
+            console.log(this.registerUserForm.controls.firstname.dirty);
+            // console.log(this.registerUserForm.controls.lastname.errors);
             this.checkForm();
         });
 
@@ -46,7 +56,8 @@ export class RegisterComponent implements OnInit {
                     } else {
                         this.availabilityStatus = AvailabilityStatus.TAKEN;
                     }
-                }, error1 => {
+                }, error => {
+                    console.warn(error.status);
                     this.availabilityStatus = AvailabilityStatus.TAKEN;
                 });
             }

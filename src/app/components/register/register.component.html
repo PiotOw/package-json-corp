@@ -1,12 +1,15 @@
 <section class="register-card">
 	<jsn-card [header]="'Register'" [border]="true">
 		<form class="add-to-do-form" [formGroup]="registerUserForm">
-			<mat-form-field [hideRequiredMarker]="true">
+			<mat-form-field>
 				<input matInput placeholder="Firstname"
 					   [formControlName]="'firstname'"
 					   autocomplete="off"
-					   required>
-				<mat-error *ngIf="registerUserForm.controls['firstname'].touched && registerUserForm.controls['firstname'].hasError('required')">
+					   matTooltip="3 - 8 characters &#13; asjkdn ajsknd ajknd"
+					   [matTooltipHideDelay]="1000"
+					   [matTooltipClass]="registerUserForm.controls['firstname'].touched && registerUserForm.controls['firstname'].errors ? 'red-tooltip' : 'tooltip'"
+					   [matTooltipPosition]="'left'">
+				<mat-error *ngIf="registerUserForm.controls['firstname'].hasError('required')">
 					This field is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -14,9 +17,13 @@
 				<input matInput placeholder="Lastname"
 					   [formControlName]="'lastname'"
 					   autocomplete="off">
-				<mat-error *ngIf="registerUserForm.controls['photo'].touched && registerUserForm.controls['lastname'].hasError('required')">
+				<mat-error *ngIf="registerUserForm.controls['lastname'].hasError('required')">
 					This field is <strong>required</strong>
 				</mat-error>
+				<mat-error *ngIf="registerUserForm.controls['lastname'].touched && registerUserForm.controls['lastname'].hasError('required')">
+					This field is <strong>required</strong>
+				</mat-error>
+
 			</mat-form-field>
 			<mat-form-field>
 				<input matInput placeholder="Password"
@@ -43,11 +50,11 @@
 				<mat-error *ngIf="registerUserForm.controls['username'].hasError('required')">
 					This field is <strong>required</strong>
 				</mat-error>
-				<div matSuffix *ngIf="availabilityStatus === 'CHECKING'">
+				<div matSuffix *ngIf="availabilityStatus === AvailabilityStatus.CHECKING">
 					<mat-spinner [diameter]="24" [strokeWidth]="4" [color]="'accent'"></mat-spinner>
 				</div>
-				<mat-icon matSuffix *ngIf="availabilityStatus === 'TAKEN'" id="username-taken-icon">close</mat-icon>
-				<mat-icon matSuffix *ngIf="availabilityStatus === 'AVAILABLE'" id="username-av-icon">check_circle</mat-icon>
+				<mat-icon matSuffix *ngIf="availabilityStatus === AvailabilityStatus.TAKEN" id="username-taken-icon">close</mat-icon>
+				<mat-icon matSuffix *ngIf="availabilityStatus === AvailabilityStatus.AVAILABLE" id="username-av-icon">check_circle</mat-icon>
 			</mat-form-field>
 			<div id="file-input-wrapper">
 				<input hidden type="file" #fileInput [formControlName]="'photo'" (change)="fileChange($event)"
