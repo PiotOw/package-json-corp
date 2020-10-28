@@ -14,12 +14,35 @@ form {
 	flex-direction: column;
 	align-items: center;
 
+	.sex-radio-group {
+		width: 60%;
+		height: 50px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		mat-radio-button span {
+			color: $dark-gray;
+			font-weight: 500;
+
+			&.invalid-input {
+				color: $warn-primary;
+			}
+		}
+	}
+
+	mat-form-field {
+		width: 80%;
+		padding: 8px
+	}
+
 	#file-input-wrapper {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		width: 80%;
-		margin-bottom: 24px;
+		margin-bottom: 32px;
 
 		button {
 			height: 36px;
@@ -49,30 +72,25 @@ form {
 
 }
 
-mat-form-field {
-	width: 80%;
-	padding: 8px
-}
-
 jsn-card {
-	height: 700px;
+	height: 760px;
 	width: 500px;
+
+	.button-row {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
 }
 
-.button-row {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-
-#username-av-icon {
+#login-av-icon {
 	color: #30FF60;
 	font-weight: 800;
 }
 
-#username-taken-icon {
-	color: #FF5766;
+#login-taken-icon {
+	color: $warn-primary;
 	font-weight: 800;
 }
 
@@ -81,8 +99,10 @@ jsn-card {
 	font-size: 12px;
 }
 
-::ng-deep .red-tooltip {
-	white-space: pre-line;
-	font-size: 12px;
-	background: red;
+::ng-deep .error-tooltip {
+	background: $warn-primary;
+}
+
+.invalid-input {
+	color: $warn-primary;
 }

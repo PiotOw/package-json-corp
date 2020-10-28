@@ -13,9 +13,12 @@ export class UserService {
 
     checkUsernameAvailability(username: string): Observable<any> {
         const link = environment.BASE_API_URL + '/check/' + username;
-        console.log(link);
         return this.http.get<any>(link);
     }
 
+    registerUser(data: FormData): Observable<any> {
+        const link = environment.BASE_API_URL + '/sender/register';
+        return this.http.post<any>(link, data);
+    }
 
 }

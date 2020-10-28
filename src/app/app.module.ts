@@ -11,17 +11,19 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule,
-    MatProgressSpinnerModule, MatRippleModule, MatTooltipModule
+    MatInputModule, MatProgressBarModule,
+    MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { MessageDialogComponent } from './modules/message-dialog/message-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CardComponent,
-        RegisterComponent
+        RegisterComponent,
+        MessageDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -37,10 +39,15 @@ import {HttpClientModule} from '@angular/common/http';
         MatRippleModule,
         HttpClientModule,
         MatProgressSpinnerModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatRadioModule,
+        MatProgressBarModule,
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        MessageDialogComponent
+    ]
 })
 export class AppModule {
 }
