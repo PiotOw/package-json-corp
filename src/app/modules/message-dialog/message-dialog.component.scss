@@ -1,0 +1,23 @@
+@import "../../../variables";
+
+* {
+	overflow: hidden;
+}
+
+mat-dialog-content {
+	color: $black;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	p {
+		white-space: pre-line;
+		text-align: center;
+	}
+
+	button {
+		margin-top: 8px;
+	}
+}
