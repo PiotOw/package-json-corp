@@ -19,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MessageDialogComponent } from './modules/message-dialog/message-dialog.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
         RegisterComponent,
         MessageDialogComponent,
         SidebarComponent,
-        DashboardComponent
+        DashboardComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

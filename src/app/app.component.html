@@ -1,6 +1,13 @@
 <div class="page">
-	<jsn-sidebar></jsn-sidebar>
-	<section class="page-content">
-		<router-outlet></router-outlet>
-	</section>
+	<div class="sidebar">
+		<jsn-sidebar></jsn-sidebar>
+	</div>
+	<div class="right-panel">
+		<section class="page-content">
+			<router-outlet></router-outlet>
+		</section>
+		<footer>
+			<jsn-footer></jsn-footer>
+		</footer>
+	</div>
 </div>
