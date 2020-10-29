@@ -9,7 +9,7 @@ import {RegisterComponent} from './views/register/register.component';
 import {
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule,
+    MatFormFieldModule, MatGridListModule,
     MatIconModule,
     MatInputModule, MatProgressBarModule,
     MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatTooltipModule
@@ -48,6 +48,7 @@ import { FooterComponent } from './components/footer/footer.component';
         MatTooltipModule,
         MatRadioModule,
         MatProgressBarModule,
+        MatGridListModule
     ],
     providers: [],
     bootstrap: [AppComponent],
