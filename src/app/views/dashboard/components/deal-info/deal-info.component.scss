@@ -1,11 +1,15 @@
 @import '../../../../../variables';
 
 .wrapper {
-	padding: 8px 0;
+	padding: 8px 0 8px 8px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	border-bottom: 1px dotted $light-gray;
+
+	&:hover {
+		background: $white-hover;
+	}
 }
 
 mat-icon {

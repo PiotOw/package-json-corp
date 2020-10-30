@@ -3,9 +3,13 @@
 .shipment {
 	display: flex;
 	flex-direction: column;
-	padding: 8px 0;
+	padding: 8px 0 8px 8px;
 	color: $black;
 	border-bottom: 1px dotted $light-gray;
+
+	&:hover {
+		background: $white-hover;
+	}
 
 	header {
 		display: flex;
@@ -20,6 +24,7 @@
 			width: 25%;
 
 			mat-icon {
+				color: $accent-primary;
 				margin-right: 10px;
 			}
 
@@ -31,6 +36,7 @@
 		}
 
 		.tracking-number {
+			color: $text-secondary;
 			font-size: 14px;
 			width: 35%;
 			text-align: center;
