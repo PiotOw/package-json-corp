@@ -1,43 +1,16 @@
-<div class="dashboard-wrapper">
-	<mat-grid-list [cols]="5" rowHeight="fit">
-		<mat-grid-tile
-			[colspan]="tiles[0].cols"
-			[rowspan]="tiles[0].rows"
-			[style.background]="tiles[0].color">
-			{{tiles[0].text}}
-		</mat-grid-tile>
-		<mat-grid-tile
-			[colspan]="2"
-			[rowspan]="2">
-			<jsn-card [header]="'Credit Card Info'" [padding]="false">
-				<div class="credit-card-info">
-					<jsn-credit-card-info></jsn-credit-card-info>
-				</div>
-			</jsn-card>
-		</mat-grid-tile>
-		<mat-grid-tile
-			[colspan]="tiles[2].cols"
-			[rowspan]="tiles[2].rows"
-			[style.background]="tiles[2].color">
-			{{tiles[2].text}}
-		</mat-grid-tile>
-		<mat-grid-tile
-			[colspan]="tiles[3].cols"
-			[rowspan]="tiles[3].rows"
-			[style.background]="tiles[3].color">
-			{{tiles[3].text}}
-		</mat-grid-tile>
-		<mat-grid-tile
-			[colspan]="tiles[4].cols"
-			[rowspan]="tiles[4].rows"
-			[style.background]="tiles[4].color">
-			{{tiles[4].text}}
-		</mat-grid-tile>
-		<mat-grid-tile
-			[colspan]="tiles[5].cols"
-			[rowspan]="tiles[5].rows"
-			[style.background]="tiles[5].color">
-			{{tiles[5].text}}
-		</mat-grid-tile>
-	</mat-grid-list>
+<div class="dashboard-wrapper container-fluid">
+	<jsn-card class="col-7 no-gutters half-height" [header]="'Track Your Shipments'">
+		<jsn-shipment-tracker></jsn-shipment-tracker>
+	</jsn-card>
+	<jsn-card class="col-5 no-gutters half-height" [header]="'Credit Card Info'" [padding]="false">
+		<jsn-credit-card-info></jsn-credit-card-info>
+	</jsn-card>
+
+	<jsn-card class="col-5 no-gutters half-height" [header]="'Credit Card Info'" [padding]="true">
+	</jsn-card>
+	<jsn-card class="col-4 no-gutters half-height" [header]="'TEST'" [padding]="true">
+		<div style="background: red; height: 100%; width: 100%"></div>
+	</jsn-card>
+	<jsn-card class="col-3 no-gutters half-height" [header]="'Credit Card Info'" [padding]="true">
+	</jsn-card>
 </div>

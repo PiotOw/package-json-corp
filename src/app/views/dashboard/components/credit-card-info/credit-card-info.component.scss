@@ -1,16 +1,20 @@
-@import '../../../../variables';
+@import '../../../../../variables';
+
 
 img {
-	width: 90%;
+	width: 100%;
+	position: relative;
+}
+
+.card-text-wrapper {
+	width: 100%;
 }
 
 .credit-card {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
-	height: 100%;
-	max-height: 100%;
+	width: 100%;
 	color: $credit-card-numbers;
 	text-transform: uppercase;
 
@@ -22,11 +26,12 @@ p {
 	position: absolute;
 	font-size: 16px;
 	opacity: 0.84;
-	left: 17%;
+	margin: 0;
+	left: 14%;
 }
 
 .card-number-label {
-	top: 39%;
+	top: 57%;
 }
 
 .text-primary {
@@ -34,7 +39,7 @@ p {
 }
 
 .card-number {
-	top: 43%;
+	top: 60%;
 
 	.asterisk {
 		letter-spacing: 2px;
@@ -43,9 +48,9 @@ p {
 }
 
 .card-valid-label {
-	top: 60%;
+	top: 75%;
 }
 
 .card-valid {
-	top: 64%;
+	top: 80%;
 }
