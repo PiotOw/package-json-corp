@@ -1,0 +1,23 @@
+<div class="shipment" [ngClass]="{'last': last}">
+	<header>
+		<div class="shipment-name">
+			<mat-icon>local_shipping</mat-icon>
+			<div class="shipment-from">
+				{{shipment.from.city}}
+			</div>
+		</div>
+		<div class="tracking-number">
+			{{shipment.trackingNumber}}
+		</div>
+		<div class="shipment-to">
+			{{shipment.to.city}}
+		</div>
+		<div class="shipment-cash">
+			<span *ngIf="shipment.cashOnDelivery">${{shipment.cashOnDelivery}}</span>
+			<span *ngIf="!shipment.cashOnDelivery">---</span>
+		</div>
+		<div class="shipment-eta">
+			{{getEtaDays(shipment.eta)}}<span>Days</span>
+		</div>
+	</header>
+</div>

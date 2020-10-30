@@ -1,0 +1,19 @@
+@import '../../../../../variables';
+
+.chart {
+	height: calc(100% - 40px);
+	width: 100%;
+}
+
+.total-balance {
+	padding: 12px 12px 0 24px;
+	text-align: left;
+	margin-bottom: -20px;
+
+	span {
+		color: $teal-accent;
+		font-size: 18px;
+		font-weight: 600;
+		padding-left: 8px;
+	}
+}

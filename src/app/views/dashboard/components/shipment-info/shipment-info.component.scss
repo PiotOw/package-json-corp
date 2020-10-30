@@ -1,0 +1,74 @@
+@import '../../../../../variables';
+
+.shipment {
+	display: flex;
+	flex-direction: column;
+	padding: 8px 0 8px 8px;
+	color: $black;
+	border-bottom: 1px dotted $light-gray;
+
+	&:hover {
+		background: $white-hover;
+	}
+
+	header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		.shipment-name {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 25%;
+
+			mat-icon {
+				color: $accent-primary;
+				margin-right: 10px;
+			}
+
+			.shipment-from {
+				width: 100%;
+				font-size: 18px;
+				font-weight: 500;
+			}
+		}
+
+		.tracking-number {
+			color: $text-secondary;
+			font-size: 14px;
+			width: 35%;
+			text-align: center;
+		}
+
+	}
+}
+
+.shipment-to {
+	width: 17%;
+	text-align: center;
+}
+
+.shipment-cash {
+	width: 10%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.shipment-eta {
+	width: 13%;
+
+	span {
+		font-size: 12px;
+		padding-left: 4px;
+		text-align: center;
+	}
+}
+
+.last {
+	border: 0;
+}

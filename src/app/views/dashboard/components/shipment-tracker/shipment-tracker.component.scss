@@ -1,0 +1,47 @@
+@import '../../../../../variables';
+
+.shipments-list {
+	height: 100%;
+}
+
+section {
+	max-height: calc(100% - 34px);
+	overflow: scroll;
+}
+
+.legend {
+	display: flex;
+	flex-direction: row;
+	padding: 8px 0;
+
+	& div {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		color: $dark-gray;
+	}
+
+	.from {
+		width: 25%;
+		padding-left: 34px;
+	}
+
+	.tracking-number {
+		width: 35%;
+	}
+
+	.to {
+		width: 17%;
+
+	}
+
+	.payment {
+		width: 10%;
+
+	}
+
+	.eta {
+		width: 13%;
+	}
+}

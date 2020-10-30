@@ -1,0 +1,10 @@
+.dashboard-wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: calc(100vh - 41px);
+}
+
+.half-height {
+	height: 50%;
+}

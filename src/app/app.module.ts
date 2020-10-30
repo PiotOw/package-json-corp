@@ -9,7 +9,7 @@ import {RegisterComponent} from './views/register/register.component';
 import {
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule,
+    MatFormFieldModule, MatGridListModule,
     MatIconModule,
     MatInputModule, MatProgressBarModule,
     MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatTooltipModule
@@ -20,6 +20,14 @@ import { MessageDialogComponent } from './modules/message-dialog/message-dialog.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreditCardInfoComponent } from './views/dashboard/components/credit-card-info/credit-card-info.component';
+import { ShipmentTrackerComponent } from './views/dashboard/components/shipment-tracker/shipment-tracker.component';
+import { ShipmentInfoComponent } from './views/dashboard/components/shipment-info/shipment-info.component';
+import { AccountBalanceComponent } from './views/dashboard/components/account-balance/account-balance.component';
+import {NgApexchartsModule} from 'ng-apexcharts';
+import { DealsComponent } from './views/dashboard/components/deals/deals.component';
+import { DealInfoComponent } from './views/dashboard/components/deal-info/deal-info.component';
+import { ClosestDeliveryComponent } from './views/dashboard/components/closest-delivery/closest-delivery.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +37,14 @@ import { FooterComponent } from './components/footer/footer.component';
         MessageDialogComponent,
         SidebarComponent,
         DashboardComponent,
-        FooterComponent
+        FooterComponent,
+        CreditCardInfoComponent,
+        ShipmentTrackerComponent,
+        ShipmentInfoComponent,
+        AccountBalanceComponent,
+        DealsComponent,
+        DealInfoComponent,
+        ClosestDeliveryComponent,
     ],
     imports: [
         BrowserModule,
@@ -48,6 +63,8 @@ import { FooterComponent } from './components/footer/footer.component';
         MatTooltipModule,
         MatRadioModule,
         MatProgressBarModule,
+        MatGridListModule,
+        NgApexchartsModule
     ],
     providers: [],
     bootstrap: [AppComponent],

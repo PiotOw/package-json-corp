@@ -1,0 +1,16 @@
+<div class="shipments-list">
+	<div class="legend">
+		<div class="from">From</div>
+		<div class="tracking-number">Tracking Number</div>
+		<div class="to">To</div>
+		<div class="payment">Payment</div>
+		<div class="eta">ETA</div>
+	</div>
+	<section>
+		<jsn-shipment-info
+			*ngFor="let shipment of SHIPMENTS; let last = last"
+			[shipment]="shipment"
+			[last]="last"
+		></jsn-shipment-info>
+	</section>
+</div>

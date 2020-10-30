@@ -1,4 +1,18 @@
-<div style="width: 100%; min-height: calc(100vh - 40px); background: darkcyan">
-	DASHBOARD
-	<div style="height: 100%"></div>
+<div class="dashboard-wrapper container-fluid">
+	<jsn-card class="col-7 no-gutters half-height" [header]="'Track Your Shipments'">
+		<jsn-shipment-tracker></jsn-shipment-tracker>
+	</jsn-card>
+	<jsn-card class="col-5 no-gutters half-height" [header]="'Credit Card Info'" [padding]="false">
+		<jsn-credit-card-info></jsn-credit-card-info>
+	</jsn-card>
+
+	<jsn-card class="col-3 no-gutters half-height" [header]="'Closest delivery'" [padding]="true">
+		<jsn-closest-delivery></jsn-closest-delivery>
+	</jsn-card>
+	<jsn-card class="col-5 no-gutters half-height" [header]="'Account balance'" [padding]="true">
+		<jsn-account-balance></jsn-account-balance>
+	</jsn-card>
+	<jsn-card class="col-4 no-gutters half-height" [header]="'Hot Deals'" [padding]="true">
+		<jsn-deals></jsn-deals>
+	</jsn-card>
 </div>

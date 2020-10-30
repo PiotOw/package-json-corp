@@ -1,5 +1,6 @@
 @import "variables";
 @import "theme";
+@import "~bootstrap/scss/bootstrap-grid.scss";
 
 * {
 	box-sizing: border-box;
@@ -42,4 +43,8 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.mat-grid-tile .mat-figure {
+	padding: 24px;
 }
