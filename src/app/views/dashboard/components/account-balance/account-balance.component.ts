@@ -13,8 +13,6 @@ export class AccountBalanceComponent implements OnInit {
 
     accountBalance = mockBalance;
 
-    max: number;
-
     constructor() {
         this.chartOptions = {
             series: [
@@ -32,7 +30,6 @@ export class AccountBalanceComponent implements OnInit {
             },
             title: {
                 text: '',
-                show: false
             },
             xaxis: {
                 categories: ['Cash on Delivery', 'Ref links', 'Online Payments', 'Returns']
@@ -70,8 +67,6 @@ export class AccountBalanceComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(Math.max.apply(null, this.accountBalance));
-        console.log(Math.ceil(Math.max.apply(null, this.accountBalance) / 100));
     }
 
     totalBalance(): number {

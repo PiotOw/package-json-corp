@@ -15,7 +15,6 @@ export class ShipmentInfoComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.last);
     }
 
     getEtaDays(eta: string): number {
