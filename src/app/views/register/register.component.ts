@@ -70,31 +70,10 @@ export class RegisterComponent implements OnInit {
             this.identicalPasswords();
         });
 
-
         this.registerUserForm.controls.login.valueChanges.subscribe(value => {
-            this.loginTooltip.message = '3-12 characters \n All lowercase';
-            this.loginTooltip.tooltipClass = 'tooltip';
-            if (this.registerUserForm.controls.login.valid) {
-                this.availabilityStatus = AvailabilityStatus.CHECKING;
-                this.api.checkUsernameAvailability(value).subscribe(res => {
-                    if (res[value] === 'available') {
-                        this.availabilityStatus = AvailabilityStatus.AVAILABLE;
-                        this.checkForm();
-                    } else {
-                        this.availabilityStatus = AvailabilityStatus.TAKEN;
-                        this.loginTooltip.message = 'Login unavailable';
-                        this.loginTooltip.tooltipClass = 'tooltip error-tooltip';
-                        this.loginTooltip.toggle();
-                        this.registerUserForm.controls.login.setErrors({incorrect: true});
-                    }
-                }, error => {
-                    console.warn(error.status);
-                    this.availabilityStatus = AvailabilityStatus.TAKEN;
-                });
-            } else {
-                this.availabilityStatus = AvailabilityStatus.TAKEN;
+                this.checkLoginAvailability(value);
             }
-        });
+        );
     }
 
     identicalPasswords(): boolean {
@@ -156,10 +135,16 @@ export class RegisterComponent implements OnInit {
             this.api.registerUser(formData).subscribe(() => {
                 dialogRef.componentInstance.loading = false;
                 dialogRef.componentInstance.message = 'User has been registered';
+                dialogRef.afterClosed().subscribe(() => {
+                    this.checkLoginAvailability(this.registerUserForm.controls.login.value);
+                });
             }, error => {
                 dialogRef.componentInstance.loading = false;
                 if (error.status === 200) {
                     dialogRef.componentInstance.message = 'User has been registered';
+                    dialogRef.afterClosed().subscribe(() => {
+                        this.checkLoginAvailability(this.registerUserForm.controls.login.value);
+                    });
                 } else {
                     dialogRef.componentInstance.message = 'An error occured. Please try again.';
                 }
@@ -178,6 +163,31 @@ export class RegisterComponent implements OnInit {
             }
             this.sexInputError = this.registerUserForm.controls.sex.invalid;
             this.photoInputError = this.registerUserForm.controls.photo.invalid;
+        }
+    }
+
+    checkLoginAvailability(value: string) {
+        this.loginTooltip.message = '3-12 characters \n All lowercase';
+        this.loginTooltip.tooltipClass = 'tooltip';
+        if (this.registerUserForm.controls.login.valid) {
+            this.availabilityStatus = AvailabilityStatus.CHECKING;
+            this.api.checkUsernameAvailability(value).subscribe(res => {
+                if (res[value] === 'available') {
+                    this.availabilityStatus = AvailabilityStatus.AVAILABLE;
+                    this.checkForm();
+                } else {
+                    this.availabilityStatus = AvailabilityStatus.TAKEN;
+                    this.loginTooltip.message = 'Login unavailable';
+                    this.loginTooltip.tooltipClass = 'tooltip error-tooltip';
+                    this.loginTooltip.toggle();
+                    this.registerUserForm.controls.login.setErrors({incorrect: true});
+                }
+            }, error => {
+                console.warn(error.status);
+                this.availabilityStatus = AvailabilityStatus.TAKEN;
+            });
+        } else {
+            this.availabilityStatus = AvailabilityStatus.TAKEN;
         }
     }
 }
