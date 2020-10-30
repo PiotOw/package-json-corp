@@ -32,7 +32,6 @@ export class AccountBalanceComponent implements OnInit {
             },
             title: {
                 text: '',
-                show: false
             },
             xaxis: {
                 categories: ['Cash on Delivery', 'Ref links', 'Online Payments', 'Returns']
