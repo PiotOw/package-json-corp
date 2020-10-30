@@ -1,6 +1,8 @@
-<div class="wrapper" [ngClass]="{'border': border === true}">
-	<header>
+<div class="wrapper" [ngClass]="{'border': border}">
+	<header [ngClass]="{'centered': centeredHeader}">
 		{{header}}
 	</header>
-	<ng-content></ng-content>
+	<div [ngClass]="{'content-padding': padding}">
+		<ng-content></ng-content>
+	</div>
 </div>

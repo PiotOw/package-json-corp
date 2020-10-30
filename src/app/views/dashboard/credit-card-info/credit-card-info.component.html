@@ -1,0 +1,9 @@
+<div class="credit-card">
+	<img src="../../../../assets/card-placeholder-add-ons.png">
+	<p class="card-number-label">Card Number</p>
+	<p class="card-number text-primary">
+		<span class="asterisk" *ngFor="let i of [0, 1, 2]">****</span>{{card.number}}</p>
+	<p class="card-valid-label">Valid Through</p>
+	<p class="card-valid text-primary">
+		{{card.valid.month}}/{{card.valid.year}}</p>
+</div>

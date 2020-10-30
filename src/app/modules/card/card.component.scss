@@ -4,25 +4,31 @@
 	padding: 24px;
 }
 
+.content-padding {
+	padding: 0 24px 24px 24px;
+}
+
 .wrapper {
 	background: #FFFFFF 0 0 no-repeat padding-box;
 	box-shadow: 0 10px 36px #0000001F;
 	border-radius: 18px;
 	opacity: 1;
 	display: block;
-	padding: 0px 24px 24px 24px;
 	height: 100%;
 
 	header {
-		text-align: center;
 		font-weight: 900;
 		font-size: 24px;
 		border-bottom: 0.5px solid rgba(112, 112, 112, 0.51);
 		padding: 24px;
-		margin-bottom: 24px;
+		margin: 0 24px;
 	}
 }
 
 .border {
 	border: 2px solid $accent-primary;
+}
+
+.centered {
+	text-align: center;
 }

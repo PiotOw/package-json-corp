@@ -20,6 +20,7 @@ import { MessageDialogComponent } from './modules/message-dialog/message-dialog.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreditCardInfoComponent } from './views/dashboard/credit-card-info/credit-card-info.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
         MessageDialogComponent,
         SidebarComponent,
         DashboardComponent,
-        FooterComponent
+        FooterComponent,
+        CreditCardInfoComponent
     ],
     imports: [
         BrowserModule,
