@@ -8,7 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardComponent implements OnInit {
 
     @Input() header: string;
-    @Input() border: boolean;
+    @Input() border = false;
+    @Input() padding = true;
+    @Input() centeredHeader = false;
 
     constructor() {
     }
