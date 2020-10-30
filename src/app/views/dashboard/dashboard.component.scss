@@ -1,13 +1,10 @@
 .dashboard-wrapper {
-	height: calc(100vh - 40px);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: calc(100vh - 41px);
 }
 
-mat-grid-list {
-	height: 100%;
-}
-
-.credit-card-info {
-	height: 100%;
-	max-height: 100%;
-	width: 100%;
+.half-height {
+	height: 50%;
 }

@@ -20,7 +20,8 @@ import { MessageDialogComponent } from './modules/message-dialog/message-dialog.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CreditCardInfoComponent } from './views/dashboard/credit-card-info/credit-card-info.component';
+import { CreditCardInfoComponent } from './views/dashboard/components/credit-card-info/credit-card-info.component';
+import { ShipmentTrackerComponent } from './views/dashboard/components/shipment-tracker/shipment-tracker.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { CreditCardInfoComponent } from './views/dashboard/credit-card-info/cred
         SidebarComponent,
         DashboardComponent,
         FooterComponent,
-        CreditCardInfoComponent
+        CreditCardInfoComponent,
+        ShipmentTrackerComponent
     ],
     imports: [
         BrowserModule,

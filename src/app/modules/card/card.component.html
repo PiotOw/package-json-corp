@@ -2,7 +2,7 @@
 	<header [ngClass]="{'centered': centeredHeader}">
 		{{header}}
 	</header>
-	<div [ngClass]="{'content-padding': padding}">
-		<ng-content></ng-content>
+	<div class="content" [ngClass]="{'content-padding': padding}">
+		<ng-content style="height: calc(100% - 77px);"></ng-content>
 	</div>
 </div>

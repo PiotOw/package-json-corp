@@ -1,7 +1,7 @@
 @import '../../../variables';
 
 :host {
-	padding: 24px;
+	padding: 16px;
 }
 
 .content-padding {
@@ -31,4 +31,8 @@
 
 .centered {
 	text-align: center;
+}
+
+.content {
+	height: calc(100% - 77px);
 }
