@@ -2,12 +2,15 @@
 
 
 img {
-	width: 100%;
+	width: 90%;
 	position: relative;
 }
 
 .card-text-wrapper {
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .credit-card {
@@ -27,11 +30,11 @@ p {
 	font-size: 16px;
 	opacity: 0.84;
 	margin: 0;
-	left: 14%;
+	left: 18%;
 }
 
 .card-number-label {
-	top: 57%;
+	top: 53%;
 }
 
 .text-primary {
@@ -39,7 +42,7 @@ p {
 }
 
 .card-number {
-	top: 60%;
+	top: 56%;
 
 	.asterisk {
 		letter-spacing: 2px;
@@ -48,9 +51,9 @@ p {
 }
 
 .card-valid-label {
-	top: 75%;
+	top: 70%;
 }
 
 .card-valid {
-	top: 80%;
+	top: 75%;
 }
