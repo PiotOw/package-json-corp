@@ -4,7 +4,6 @@ import {
     ApexFill,
     ApexMarkers,
     ApexStroke,
-    ApexTitleSubtitle,
     ApexTitleSubtitle, ApexTooltip,
     ApexXAxis, ApexYAxis
 } from 'ng-apexcharts';
