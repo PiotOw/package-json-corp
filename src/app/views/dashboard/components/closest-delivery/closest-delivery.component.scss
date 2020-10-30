@@ -1,0 +1,35 @@
+@import '../../../../../variables';
+
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tile {
+	padding: 16px;
+	border-radius: 16px;
+	margin-bottom: 24px;
+	background: rgb(240,159,139);
+	background: radial-gradient(circle, #F09F8B 0%, $accent-orange 80%, #d16b53 100%);
+	box-shadow: 0 0 20px 0 $accent-orange;
+
+	mat-icon {
+		height: 15vh;
+		width: 15vh;
+		color: $white;
+		font-size: 15vh;
+	}
+}
+
+span {
+	font-size: 20px;
+
+	span {
+		color: $accent-orange;
+		font-weight: 600;
+		font-size: 26px;
+	}
+}

@@ -21,4 +21,12 @@ export const DEALS: Deal[] = [
         title: 'Christmas delivery guarantee',
         code: 'XMASSOON'
     },
+    {
+        title: 'Birthday Present',
+        code: 'HPPYBDAY'
+    },
+    {
+        title: '5 Years Anniversary Special',
+        code: '5YEARS'
+    }
 ];
