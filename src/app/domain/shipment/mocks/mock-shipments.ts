@@ -2,172 +2,134 @@ import {Shipment} from '../models/shipment';
 
 export const SHIPMENTS: Shipment[] = [
     {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
+        trackingNumber: 'HUGA-GYAN-TSNR-6AB5',
         from: {
             city: 'New York',
-            Address: 'Awesome Street 14/21',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
         cashOnDelivery: 251,
-        eta: '03/25/2021'
+        eta: '11/25/2020'
     },
     {
         trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
         from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
+            city: 'Barcelona',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
+        cashOnDelivery: 21,
+        eta: '11/15/2020'
     },
     {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
+        trackingNumber: 'JGNA_42HG-7NAF-OYNE',
         from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
+            city: 'New Orlean',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
+        cashOnDelivery: 29,
+        eta: '11/08/2020'
     },
     {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
+        trackingNumber: 'BGAR-S523-HRBA-72BA',
         from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
+            city: 'Berlin',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
+        cashOnDelivery: 68,
+        eta: '11/04/2020'
     },
     {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
+        trackingNumber: 'VOD6-VFJ8-86HF-GABD',
         from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
+            city: 'Luksemburg',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
+        cashOnDelivery: 98,
+        eta: '11/10/2020'
     },
     {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
+        trackingNumber: 'HGBW-562B-F72N-FNW9',
         from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
+            city: 'Tokio',
         },
         to: {
             city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'DBAS-SBAD-AHSJ-AHDS',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
-        },
-        cashOnDelivery: 251,
-        eta: '03/25/2021'
-    },
-    {
-        trackingNumber: 'XXXX-XXXX-XXXX-XXXX',
-        from: {
-            city: 'New York',
-            Address: 'Awesome Street 14/21',
-        },
-        to: {
-            city: 'Warsaw',
-            Address: 'Plac Politechniki 1'
         },
         cashOnDelivery: null,
-        eta: '05/30/2021'
-    }
-    ];
+        eta: '11/18/2020'
+    },
+    {
+        trackingNumber: 'GSON-6F7B-0JCT-ATTC',
+        from: {
+            city: 'Moscow',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: null,
+        eta: '11/21/2020'
+    },
+    {
+        trackingNumber: 'CIAT-YBF7-257G-NFS8',
+        from: {
+            city: 'Paris',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: 15,
+        eta: '11/26/2020'
+    },
+    {
+        trackingNumber: 'DICM-4D4D-LGNU-TZH5',
+        from: {
+            city: 'Rome',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: 74,
+        eta: '11/09/2020'
+    },
+    {
+        trackingNumber: 'BFIQ-FHWB-EJFG-36NF',
+        from: {
+            city: 'San Francisco',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: null,
+        eta: '11/05/2020'
+    },
+    {
+        trackingNumber: 'DBWO-FBK7-NRYW-56FA',
+        from: {
+            city: 'London',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: 7,
+        eta: '11/16/2020'
+    },
+    {
+        trackingNumber: 'KVYB-TDUH-5G6F-8JG6',
+        from: {
+            city: 'Sydney',
+        },
+        to: {
+            city: 'Warsaw',
+        },
+        cashOnDelivery: 72,
+        eta: '11/26/2020'
+    }];

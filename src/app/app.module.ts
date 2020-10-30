@@ -27,6 +27,7 @@ import { AccountBalanceComponent } from './views/dashboard/components/account-ba
 import {NgApexchartsModule} from 'ng-apexcharts';
 import { DealsComponent } from './views/dashboard/components/deals/deals.component';
 import { DealInfoComponent } from './views/dashboard/components/deal-info/deal-info.component';
+import { ClosestDeliveryComponent } from './views/dashboard/components/closest-delivery/closest-delivery.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { DealInfoComponent } from './views/dashboard/components/deal-info/deal-i
         AccountBalanceComponent,
         DealsComponent,
         DealInfoComponent,
+        ClosestDeliveryComponent,
     ],
     imports: [
         BrowserModule,
