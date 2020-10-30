@@ -22,6 +22,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreditCardInfoComponent } from './views/dashboard/components/credit-card-info/credit-card-info.component';
 import { ShipmentTrackerComponent } from './views/dashboard/components/shipment-tracker/shipment-tracker.component';
+import { ShipmentInfoComponent } from './views/dashboard/components/shipment-info/shipment-info.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { ShipmentTrackerComponent } from './views/dashboard/components/shipment-
         DashboardComponent,
         FooterComponent,
         CreditCardInfoComponent,
-        ShipmentTrackerComponent
+        ShipmentTrackerComponent,
+        ShipmentInfoComponent
     ],
     imports: [
         BrowserModule,
