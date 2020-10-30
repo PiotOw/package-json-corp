@@ -1,0 +1,16 @@
+<div class="total-balance">
+	Total:<span>${{totalBalance()}}</span>
+</div>
+<div class="chart">
+	<apx-chart
+		[series]="chartOptions.series"
+		[chart]="chartOptions.chart"
+		[xaxis]="chartOptions.xaxis"
+		[title]="chartOptions.title"
+		[fill]="chartOptions.fill"
+		[stroke]="chartOptions.stroke"
+		[markers]="chartOptions.markers"
+		[yaxis]="chartOptions.yaxis"
+		[tooltip]="chartOptions.tooltip"
+	></apx-chart>
+</div>

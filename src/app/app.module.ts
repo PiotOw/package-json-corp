@@ -23,6 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CreditCardInfoComponent } from './views/dashboard/components/credit-card-info/credit-card-info.component';
 import { ShipmentTrackerComponent } from './views/dashboard/components/shipment-tracker/shipment-tracker.component';
 import { ShipmentInfoComponent } from './views/dashboard/components/shipment-info/shipment-info.component';
+import { AccountBalanceComponent } from './views/dashboard/components/account-balance/account-balance.component';
+import {NgApexchartsModule} from 'ng-apexcharts';
 
 @NgModule({
     declarations: [
@@ -35,7 +37,8 @@ import { ShipmentInfoComponent } from './views/dashboard/components/shipment-inf
         FooterComponent,
         CreditCardInfoComponent,
         ShipmentTrackerComponent,
-        ShipmentInfoComponent
+        ShipmentInfoComponent,
+        AccountBalanceComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,7 +57,8 @@ import { ShipmentInfoComponent } from './views/dashboard/components/shipment-inf
         MatTooltipModule,
         MatRadioModule,
         MatProgressBarModule,
-        MatGridListModule
+        MatGridListModule,
+        NgApexchartsModule
     ],
     providers: [],
     bootstrap: [AppComponent],
