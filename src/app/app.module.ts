@@ -28,6 +28,13 @@ import {NgApexchartsModule} from 'ng-apexcharts';
 import { DealsComponent } from './views/dashboard/components/deals/deals.component';
 import { DealInfoComponent } from './views/dashboard/components/deal-info/deal-info.component';
 import { ClosestDeliveryComponent } from './views/dashboard/components/closest-delivery/closest-delivery.component';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { AddNewLabelDialogComponent } from './views/dashboard/components/shipment-tracker/add-new-label-dialog/add-new-label-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+import { ConfirmDialogComponent } from './modules/confirm-dialog/confirm-dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
     declarations: [
@@ -45,6 +52,10 @@ import { ClosestDeliveryComponent } from './views/dashboard/components/closest-d
         DealsComponent,
         DealInfoComponent,
         ClosestDeliveryComponent,
+        LoginComponent,
+        LogoutComponent,
+        AddNewLabelDialogComponent,
+        ConfirmDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -64,12 +75,16 @@ import { ClosestDeliveryComponent } from './views/dashboard/components/closest-d
         MatRadioModule,
         MatProgressBarModule,
         MatGridListModule,
-        NgApexchartsModule
+        NgApexchartsModule,
+        MatSelectModule,
+        MatMenuModule
     ],
     providers: [],
     bootstrap: [AppComponent],
     entryComponents: [
-        MessageDialogComponent
+        MessageDialogComponent,
+        AddNewLabelDialogComponent,
+        ConfirmDialogComponent
     ]
 })
 export class AppModule {

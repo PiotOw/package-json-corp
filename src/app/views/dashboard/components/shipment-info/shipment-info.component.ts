@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Shipment} from '../../../../domain/shipment/models/shipment';
+import {Label} from '../../../../domain/label/models/label';
 
 @Component({
     selector: 'jsn-shipment-info',
@@ -8,18 +9,12 @@ import {Shipment} from '../../../../domain/shipment/models/shipment';
 })
 export class ShipmentInfoComponent implements OnInit {
 
-    @Input() shipment: Shipment;
+    @Input() label: Label;
     @Input() last: boolean;
 
     constructor() {
     }
 
     ngOnInit() {
-    }
-
-    getEtaDays(eta: string): number {
-        const etaDate = new Date(eta);
-        const today = new Date();
-        return Math.ceil(Math.abs((etaDate.getTime() - today.getTime()) / (24 * 3600 * 1000)));
     }
 }

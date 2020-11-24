@@ -1,18 +1,26 @@
 <nav>
-	<header>
-		<div class="app-icon">
-			<img src="../../../assets/logo-icon-dropshadow.png">
-			package.JSON Corp.
-			<span>Serialized deliveries</span>
-			<span class="author">by Piotr Owczarczyk</span>
+	<div class="upper-row">
+		<header>
+			<div class="app-icon">
+				<img src="../../../assets/logo-icon-dropshadow.png">
+				package.JSON Corp.
+				<span>Serialized deliveries</span>
+				<span class="author">by Piotr Owczarczyk</span>
+			</div>
+		</header>
+		<div class="links">
+			<div class="link" *ngFor="let link of TABS; let last = last; let first = first"
+				 (click)="redirect(link)"
+				 [class.link-last]="last" [class.active]="link.active"
+				 matRipple
+				 [matRippleCentered]="true">
+				{{link.label}}
+			</div>
 		</div>
-	</header>
-	<div class="links">
-		<div class="link" *ngFor="let link of tabsConfig; let last = last; let first = first" (click)="redirect(link)"
-			 [class.link-last]="last" [class.active]="link.active"
-			 matRipple
-			 [matRippleCentered]="true">
-			{{link.label}}
-		</div>
+	</div>
+	<div class="bottom-row" *ngIf="userLoggedIn">
+		<button mat-stroked-button class="mat-elevation-z4" color="primary" (click)="logout()">
+			Logout
+		</button>
 	</div>
 </nav>

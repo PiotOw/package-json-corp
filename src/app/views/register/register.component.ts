@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../domain/user/services/user.service';
-import {AvailabilityStatus} from '../../domain/user/models/availability-status.enum';
 import {combineLatest} from 'rxjs';
 import {MatDialog, MatTooltip} from '@angular/material';
 import {MessageDialogComponent} from '../../modules/message-dialog/message-dialog.component';
+import {User} from '../../domain/user/models/user';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'jsn-register',
@@ -18,35 +19,24 @@ export class RegisterComponent implements OnInit {
     @ViewChild('passwordTooltip', {static: true}) passwordTooltip: MatTooltip;
     @ViewChild('passwordConfirmationTooltip', {static: true}) passwordConfirmationTooltip: MatTooltip;
     @ViewChild('loginTooltip', {static: true}) loginTooltip: MatTooltip;
-
-    photoInputError = false;
-    sexInputError = false;
-
-
-    AvailabilityStatus = AvailabilityStatus;
-
-    availabilityStatus: AvailabilityStatus = AvailabilityStatus.WAITING;
-
-    fileInputConfig = {
-        disabled: true,
-        label: 'Fill in the rest of the form'
-    };
+    @ViewChild('emailTooltip', {static: true}) emailTooltip: MatTooltip;
+    @ViewChild('addressTooltip', {static: true}) addressTooltip: MatTooltip;
 
     tooltipNames: Map<string, MatTooltip>;
 
-    selectedFile: File;
     registerUserForm = new FormGroup({
         firstname: new FormControl('', [Validators.required, Validators.pattern('[A-Z ĄĆĘŁŃÓŚŹŻ][a-z ąćęłńóśźż]+')]),
         lastname: new FormControl('', [Validators.required, Validators.pattern('[A-Z ĄĆĘŁŃÓŚŹŻ][a-z ąćęłńóśźż]+')]),
-        sex: new FormControl('', Validators.required),
         password: new FormControl('', [Validators.required, Validators.pattern('.{8,}')]),
         passwordConfirmation: new FormControl('', Validators.required),
         login: new FormControl('', [Validators.required, Validators.pattern('[a-z]{3,12}')]),
-        photo: new FormControl('', Validators.required),
+        email: new FormControl('', [Validators.required, Validators.pattern('(?:[A-Za-z0-9!#$%&\'*+/=?^_`{​​|}​​~-]+(?:\\.[A-Za-z0-9!#$%&\'*+/=?^_`{​​|}​​~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){​​3}​​(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[A-Za-z0-9-]*[A-Za-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])')]),
+        address: new FormControl('', [Validators.required, Validators.pattern('[A-Z ĄĆĘŁŃÓŚŹŻ][a-z ąćęłńóśźż]+')])
     });
 
     constructor(private api: UserService,
-                private dialog: MatDialog) {
+                private dialog: MatDialog,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -54,26 +44,15 @@ export class RegisterComponent implements OnInit {
             ['firstname', this.firstnameTooltip],
             ['lastname', this.lastnameTooltip],
             ['password', this.passwordTooltip],
-            ['login', this.loginTooltip]
+            ['login', this.loginTooltip],
+            ['email', this.emailTooltip],
+            ['address', this.addressTooltip]
         ]);
-
-        this.registerUserForm.valueChanges.subscribe(() => {
-            this.checkForm();
-        });
-
-        this.registerUserForm.controls.sex.statusChanges.subscribe(() => {
-            this.sexInputError = this.registerUserForm.controls.sex.invalid;
-        });
 
         combineLatest(this.registerUserForm.controls.password.valueChanges,
             this.registerUserForm.controls.passwordConfirmation.valueChanges).subscribe(() => {
             this.identicalPasswords();
         });
-
-        this.registerUserForm.controls.login.valueChanges.subscribe(value => {
-                this.checkLoginAvailability(value);
-            }
-        );
     }
 
     identicalPasswords(): boolean {
@@ -89,65 +68,29 @@ export class RegisterComponent implements OnInit {
     }
 
     showError(controlName: string): boolean {
-        return this.registerUserForm.controls[controlName].touched && this.registerUserForm.controls[controlName].hasError('pattern');
+        return this.registerUserForm.controls[controlName].touched &&
+            (this.registerUserForm.controls[controlName].hasError('pattern') ||
+                this.registerUserForm.controls[controlName].hasError('email'));
     }
-
-    checkForm() {
-        if (this.registerUserForm.controls.firstname.valid &&
-            this.registerUserForm.controls.lastname.valid &&
-            this.registerUserForm.controls.password.valid &&
-            this.registerUserForm.controls.sex.valid &&
-            this.registerUserForm.controls.passwordConfirmation.valid &&
-            this.availabilityStatus === AvailabilityStatus.AVAILABLE) {
-            this.fileInputConfig = {
-                disabled: false,
-                label: 'Choose file'
-            };
-        } else {
-            this.fileInputConfig = {
-                disabled: true,
-                label: 'Fill in rest of the form'
-            };
-        }
-    }
-
-    fileChange(event) {
-        if (event.target.files.length > 0) {
-            this.selectedFile = event.target.files[0];
-            this.fileInputConfig.label = this.selectedFile.name;
-        }
-        this.photoInputError = this.registerUserForm.controls.photo.invalid;
-    }
-
 
     register() {
         if (this.registerUserForm.valid) {
             const dialogRef = this.dialog.open(MessageDialogComponent);
             dialogRef.componentInstance.loading = true;
-            const blob = new Blob([this.selectedFile], {type: this.selectedFile.type});
-            const formData = new FormData();
-            formData.append('firstname', this.registerUserForm.controls.firstname.value);
-            formData.append('lastname', this.registerUserForm.controls.lastname.value);
-            formData.append('password', this.registerUserForm.controls.password.value);
-            formData.append('sex', this.registerUserForm.controls.sex.value);
-            formData.append('photo', blob, this.selectedFile.name);
-            formData.append('login', this.registerUserForm.controls.login.value);
-            this.api.registerUser(formData).subscribe(() => {
+            const data: User = {
+                firstname: this.registerUserForm.controls.firstname.value,
+                lastname: this.registerUserForm.controls.lastname.value,
+                username: this.registerUserForm.controls.login.value,
+                password: this.registerUserForm.controls.password.value,
+                email: this.registerUserForm.controls.email.value,
+                address: this.registerUserForm.controls.address.value
+            };
+            this.api.registerUser(data).subscribe(() => {
                 dialogRef.componentInstance.loading = false;
                 dialogRef.componentInstance.message = 'User has been registered';
-                dialogRef.afterClosed().subscribe(() => {
-                    this.checkLoginAvailability(this.registerUserForm.controls.login.value);
-                });
+                this.router.navigate(['/sender/login']);
             }, error => {
-                dialogRef.componentInstance.loading = false;
-                if (error.status === 200) {
-                    dialogRef.componentInstance.message = 'User has been registered';
-                    dialogRef.afterClosed().subscribe(() => {
-                        this.checkLoginAvailability(this.registerUserForm.controls.login.value);
-                    });
-                } else {
-                    dialogRef.componentInstance.message = 'An error occured. Please try again.';
-                }
+                dialogRef.componentInstance.message = 'An error occurred. Please try again.';
             });
         } else {
             Object.keys(this.registerUserForm.controls).forEach(controlName => {
@@ -158,36 +101,6 @@ export class RegisterComponent implements OnInit {
             if (this.registerUserForm.controls.passwordConfirmation.invalid) {
                 this.passwordConfirmationTooltip.toggle();
             }
-            if (this.registerUserForm.controls.login.invalid) {
-                this.loginTooltip.toggle();
-            }
-            this.sexInputError = this.registerUserForm.controls.sex.invalid;
-            this.photoInputError = this.registerUserForm.controls.photo.invalid;
-        }
-    }
-
-    checkLoginAvailability(value: string) {
-        this.loginTooltip.message = '3-12 characters \n All lowercase';
-        this.loginTooltip.tooltipClass = 'tooltip';
-        if (this.registerUserForm.controls.login.valid) {
-            this.availabilityStatus = AvailabilityStatus.CHECKING;
-            this.api.checkUsernameAvailability(value).subscribe(res => {
-                if (res[value] === 'available') {
-                    this.availabilityStatus = AvailabilityStatus.AVAILABLE;
-                    this.checkForm();
-                } else {
-                    this.availabilityStatus = AvailabilityStatus.TAKEN;
-                    this.loginTooltip.message = 'Login unavailable';
-                    this.loginTooltip.tooltipClass = 'tooltip error-tooltip';
-                    this.loginTooltip.toggle();
-                    this.registerUserForm.controls.login.setErrors({incorrect: true});
-                }
-            }, error => {
-                console.warn(error.status);
-                this.availabilityStatus = AvailabilityStatus.TAKEN;
-            });
-        } else {
-            this.availabilityStatus = AvailabilityStatus.TAKEN;
         }
     }
 }
