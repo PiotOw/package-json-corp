@@ -69,12 +69,9 @@ export class SidebarComponent implements OnInit {
 
     isLoggedIn() {
         this.labelsApi.fetchAllLabels().subscribe(response => {
-                console.log(response);
                 this.TABS = this.tabsConfig.slice(0, 1);
-
                 this.userLoggedIn = true;
             }, error => {
-                console.log(error);
                 if (error.status === 401) {
                     this.TABS = this.tabsConfig.slice(1, 3);
                     this.userLoggedIn = false;
@@ -87,7 +84,6 @@ export class SidebarComponent implements OnInit {
         const dialogRef = this.dialog.open(MessageDialogComponent);
         dialogRef.componentInstance.loading = true;
         this.userApi.logout().subscribe(res => {
-            console.log(res);
             this.isLoggedIn();
             dialogRef.componentInstance.loading = false;
             dialogRef.componentInstance.message = 'You\'ve been successfully logged out';
