@@ -7,6 +7,7 @@ import {LogoutComponent} from './components/logout/logout.component';
 
 
 const routes: Routes = [
+    {path: '', redirectTo: 'sender/dashboard', pathMatch: 'full'},
     {path: 'sender/dashboard', component: DashboardComponent},
     {path: 'sender/register', component: RegisterComponent},
     {path: 'sender/login', component: LoginComponent},

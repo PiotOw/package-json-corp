@@ -1,4 +1,4 @@
-<div class="dashboard-wrapper container-fluid">
+<div class="dashboard-wrapper container-fluid" *ngIf="userLoggedIn">
 	<jsn-card class="col-7 no-gutters half-height" [header]="'Track Your Shipments'">
 		<jsn-shipment-tracker></jsn-shipment-tracker>
 	</jsn-card>
