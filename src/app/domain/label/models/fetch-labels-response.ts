@@ -1,5 +1,7 @@
 import {Label} from './label';
 
 export interface FetchLabelsResponse {
-    labels: Label[];
+    _embedded: {
+        data: Label[];
+    };
 }

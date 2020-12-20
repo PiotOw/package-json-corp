@@ -16,30 +16,21 @@ export class LabelService {
 
     fetchAllLabels(): Observable<FetchLabelsResponse> {
         const link = environment.BASE_API_URL + '/labels';
-        const options = {
-            withCredentials: true
-        };
-        return this.http.get<any>(link, options);
+        return this.http.get<any>(link);
     }
 
     createLabel(labelData: LabelRequest): Observable<Label> {
         const link = environment.BASE_API_URL + '/labels';
-        const options = {
-            withCredentials: true
-        };
         const data = {
             addressee: labelData.addressee,
             POBoxId: labelData.POBoxId,
             size: labelData.size
         };
-        return this.http.post<any>(link, data, options);
+        return this.http.post<any>(link, data);
     }
 
     deleteLabel(id: string): Observable<any> {
         const link = environment.BASE_API_URL + '/labels/' + id;
-        const options = {
-            withCredentials: true
-        };
-        return this.http.delete<any>(link, options);
+        return this.http.delete<any>(link);
     }
 }

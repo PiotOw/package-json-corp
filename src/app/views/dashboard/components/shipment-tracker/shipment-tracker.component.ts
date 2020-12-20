@@ -29,7 +29,7 @@ export class ShipmentTrackerComponent implements OnInit {
         this.api.fetchAllLabels().subscribe(response => {
             dialogRef.componentInstance.loading = false;
             dialogRef.close();
-            this.LABELS = response.labels;
+            this.LABELS = response._embedded.data;
         }, error => {
             const messageDialogRef = this.dialog.open(MessageDialogComponent);
             messageDialogRef.componentInstance.message = 'An error occurred. Try again';

@@ -9,13 +9,14 @@
 	<section>
 		<div *ngFor="let label of LABELS; let last = last">
 			<jsn-shipment-info
+				[ngClass]="{'sent': label.sent === 'true'}"
 				[label]="label"
 				[last]="last"
 				[matMenuTriggerFor]="appMenu"
 			>
 			</jsn-shipment-info>
 			<mat-menu #appMenu="matMenu" xPosition="before">
-				<button mat-menu-item (click)="deleteLabel(label)">Delete</button>
+				<button [disabled]="label.sent === 'true'" mat-menu-item (click)="deleteLabel(label)">Delete</button>
 			</mat-menu>
 		</div>
 	</section>

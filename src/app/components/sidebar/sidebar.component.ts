@@ -6,6 +6,7 @@ import {UserService} from '../../domain/user/services/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MessageDialogComponent} from '../../modules/message-dialog/message-dialog.component';
 import {LabelService} from '../../domain/label/services/label.service';
+import {LoginService} from '../../services/login-service';
 
 @Component({
     selector: 'jsn-sidebar',
@@ -40,14 +41,17 @@ export class SidebarComponent implements OnInit {
     constructor(private router: Router,
                 private userApi: UserService,
                 private dialog: MatDialog,
-                private labelsApi: LabelService) {
+                private labelsApi: LabelService,
+                private loginService: LoginService) {
     }
 
     ngOnInit() {
+        this.loginService.data$.subscribe(data => {
+            this.isLoggedIn(data.isLoggedIn);
+        });
         this.router.events
             .pipe(filter(event => event instanceof NavigationStart))
             .subscribe((event: NavigationStart) => {
-                this.isLoggedIn();
                 const url = event.url.substr(1, event.url.length - 1);
                 const activeTab = this.tabsConfig.find(link => link.url === url);
                 if (activeTab) {
@@ -67,27 +71,22 @@ export class SidebarComponent implements OnInit {
         this.router.navigate([link.url]);
     }
 
-    isLoggedIn() {
-        this.labelsApi.fetchAllLabels().subscribe(response => {
-                this.TABS = this.tabsConfig.slice(0, 1);
-                this.userLoggedIn = true;
-            }, error => {
-                if (error.status === 401) {
-                    this.TABS = this.tabsConfig.slice(1, 3);
-                    this.userLoggedIn = false;
-                }
-            }
-        );
+    isLoggedIn(isLoggedIn) {
+        if (isLoggedIn) {
+            this.TABS = this.tabsConfig.slice(0, 1);
+            this.userLoggedIn = true;
+        } else {
+            this.TABS = this.tabsConfig.slice(1, 3);
+            this.userLoggedIn = false;
+        }
     }
 
     logout() {
         const dialogRef = this.dialog.open(MessageDialogComponent);
         dialogRef.componentInstance.loading = true;
-        this.userApi.logout().subscribe(res => {
-            this.isLoggedIn();
-            dialogRef.componentInstance.loading = false;
-            dialogRef.componentInstance.message = 'You\'ve been successfully logged out';
-            this.router.navigate(['sender/login']);
-        });
+        this.userApi.logout();
+        dialogRef.componentInstance.loading = false;
+        dialogRef.componentInstance.message = 'You\'ve been successfully logged out';
+        this.router.navigate(['sender/login']);
     }
 }

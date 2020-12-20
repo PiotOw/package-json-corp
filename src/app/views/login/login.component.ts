@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
                 dialogRef.close();
                 this.router.navigate(['sender/dashboard']);
             }, error => {
+                console.log(error);
                 dialogRef.componentInstance.loading = false;
                 if (error.status === 400) {
                     dialogRef.componentInstance.message = 'Incorrect username and/or password';

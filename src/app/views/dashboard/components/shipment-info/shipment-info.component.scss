@@ -40,7 +40,26 @@
 			text-align: center;
 		}
 	}
+}
 
+.sent {
+	background: $light-gray-panel !important;
+	cursor: alias !important;
+
+	&:hover {
+		background: $light-gray-panel !important;
+	}
+
+	header {
+
+		.label-icon {
+			color: $dark-gray !important;
+		}
+
+		.label-id {
+			color: $light-gray !important;
+		}
+	}
 }
 
 .parcel-size {

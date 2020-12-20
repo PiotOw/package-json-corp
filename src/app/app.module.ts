@@ -15,7 +15,7 @@ import {
     MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MessageDialogComponent } from './modules/message-dialog/message-dialog.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -35,6 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
 import { ConfirmDialogComponent } from './modules/confirm-dialog/confirm-dialog.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {AuthInterceptor} from './auth/auth.interceptor';
+import {UnauthorizedInterceptor} from './auth/unauthorized.interceptor';
 
 @NgModule({
     declarations: [
@@ -79,7 +81,10 @@ import {MatMenuModule} from '@angular/material/menu';
         MatSelectModule,
         MatMenuModule
     ],
-    providers: [],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true},
+    ],
     bootstrap: [AppComponent],
     entryComponents: [
         MessageDialogComponent,

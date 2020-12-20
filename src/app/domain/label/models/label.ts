@@ -4,4 +4,5 @@ export interface Label {
     addressee: string;
     size: string;
     poBox: string;
+    sent: string;
 }
