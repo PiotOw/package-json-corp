@@ -89,9 +89,8 @@ export class SidebarComponent implements OnInit {
         this.auth.isAuthenticated$.subscribe(res => {
             if (res) {
                 this.auth.logout({returnTo: document.location.origin});
-            } else {
-                this.userApi.logout();
             }
+            this.userApi.logout();
         });
         dialogRef.componentInstance.loading = false;
         dialogRef.componentInstance.message = 'You\'ve been successfully logged out';

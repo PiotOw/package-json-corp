@@ -6,14 +6,17 @@ import {AppComponent} from './app.component';
 import {CardComponent} from './modules/card/card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegisterComponent} from './views/register/register.component';
-import {
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule, MatGridListModule,
-    MatIconModule,
-    MatInputModule, MatProgressBarModule,
-    MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MessageDialogComponent } from './modules/message-dialog/message-dialog.component';
