@@ -37,6 +37,7 @@ import { ConfirmDialogComponent } from './modules/confirm-dialog/confirm-dialog.
 import {MatMenuModule} from '@angular/material/menu';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {UnauthorizedInterceptor} from './auth/unauthorized.interceptor';
+import {AuthModule} from '@auth0/auth0-angular';
 
 @NgModule({
     declarations: [
@@ -79,7 +80,12 @@ import {UnauthorizedInterceptor} from './auth/unauthorized.interceptor';
         MatGridListModule,
         NgApexchartsModule,
         MatSelectModule,
-        MatMenuModule
+        MatMenuModule,
+
+        AuthModule.forRoot({
+            domain: 'powczarczyk.eu.auth0.com',
+            clientId: '94PvYqz6e7DF8UoeiMLMsf4qQfQdGMVs'
+        }),
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

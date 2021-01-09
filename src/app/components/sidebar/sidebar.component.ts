@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MessageDialogComponent} from '../../modules/message-dialog/message-dialog.component';
 import {LabelService} from '../../domain/label/services/label.service';
 import {LoginService} from '../../services/login-service';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
     selector: 'jsn-sidebar',
@@ -42,7 +43,8 @@ export class SidebarComponent implements OnInit {
                 private userApi: UserService,
                 private dialog: MatDialog,
                 private labelsApi: LabelService,
-                private loginService: LoginService) {
+                private loginService: LoginService,
+                private auth: AuthService) {
     }
 
     ngOnInit() {
@@ -84,7 +86,13 @@ export class SidebarComponent implements OnInit {
     logout() {
         const dialogRef = this.dialog.open(MessageDialogComponent);
         dialogRef.componentInstance.loading = true;
-        this.userApi.logout();
+        this.auth.isAuthenticated$.subscribe(res => {
+            if (res) {
+                this.auth.logout({returnTo: document.location.origin});
+            } else {
+                this.userApi.logout();
+            }
+        });
         dialogRef.componentInstance.loading = false;
         dialogRef.componentInstance.message = 'You\'ve been successfully logged out';
         this.router.navigate(['sender/login']);

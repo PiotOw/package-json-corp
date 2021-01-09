@@ -51,4 +51,17 @@ export class UserService {
     redirectToLoginPage(): Observable<boolean> {
         return fromPromise(this.router.navigate(['sender/login']));
     }
+
+    loginAuth0(email: string, sub: string) {
+        const link = environment.BASE_API_URL + '/auth/login/auth0';
+        const data = {
+            email,
+            sub
+        };
+        return this.http.post<any>(link, data, {observe: 'response'}).pipe(
+            map(res => {
+                localStorage.setItem(UserService.localStorageJWTKey, res.headers.get('Authorization') as string);
+                this.loginService.changeData(true);
+            }));
+    }
 }

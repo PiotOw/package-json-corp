@@ -5,6 +5,7 @@ import {MessageDialogComponent} from '../../modules/message-dialog/message-dialo
 import {MatDialog} from '@angular/material/dialog';
 import {LoginRequest} from '../../domain/user/models/login-request';
 import {Router} from '@angular/router';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
     selector: 'jsn-login',
@@ -20,10 +21,22 @@ export class LoginComponent implements OnInit {
 
     constructor(private api: UserService,
                 private dialog: MatDialog,
-                private router: Router) {
+                private router: Router,
+                private auth: AuthService) {
     }
 
     ngOnInit() {
+        this.auth.isAuthenticated$.subscribe(res => {
+            if (res) {
+                this.auth.user$.subscribe(response => {
+                    if (response) {
+                        this.api.loginAuth0(response.email, response.sub).subscribe(_ => {
+                            this.router.navigate(['sender/dashboard']);
+                        });
+                    }
+                });
+            }
+        });
     }
 
     login() {
@@ -50,5 +63,9 @@ export class LoginComponent implements OnInit {
             dialogRef.componentInstance.loading = false;
             dialogRef.componentInstance.message = 'Fill in the form';
         }
+    }
+
+    loginRedirect() {
+        this.auth.loginWithRedirect();
     }
 }
