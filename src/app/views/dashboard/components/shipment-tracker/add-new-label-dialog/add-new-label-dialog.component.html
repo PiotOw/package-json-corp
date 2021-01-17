@@ -1,0 +1,39 @@
+<section class="dialog-content">
+	<header>
+		New Label
+	</header>
+	<form [formGroup]="labelForm">
+		<mat-form-field>
+			<input matInput placeholder="Addressee"
+				   [formControlName]="'addressee'"
+				   autocomplete="off">
+			<mat-error *ngIf="labelForm.controls['addressee'].hasError('required')">
+				<strong>Required</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Parcel size</mat-label>
+			<mat-select [formControlName]="'size'">
+				<mat-option *ngFor="let size of SIZES" [value]="size.sign">
+					{{size.sign + '  (' + size.x + 'x' + size.y + 'x' + size.z + ')'}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="P.O. Box"
+				   [formControlName]="'poBox'"
+				   autocomplete="off">
+			<mat-error *ngIf="labelForm.controls['poBox'].hasError('required')">
+				<strong>Required</strong>
+			</mat-error>
+		</mat-form-field>
+		<div class="button-row">
+			<button mat-stroked-button class="mat-elevation-z4" color="primary" (click)="close()">
+				Cancel
+			</button>
+			<button mat-raised-button type="submit" class="mat-elevation-z4" color="primary" (click)="add()">
+				Add
+			</button>
+		</div>
+	</form>
+</section>

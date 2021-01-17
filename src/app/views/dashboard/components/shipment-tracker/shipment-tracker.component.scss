@@ -22,26 +22,42 @@ section {
 		color: $dark-gray;
 	}
 
-	.from {
-		width: 25%;
-		padding-left: 34px;
+	.label-icon {
+		width: 3%;
 	}
 
-	.tracking-number {
-		width: 35%;
+	.label-id {
+		width: 45%;
 	}
 
-	.to {
-		width: 17%;
-
-	}
-
-	.payment {
-		width: 10%;
+	.label-addressee {
+		width: 24%;
 
 	}
 
-	.eta {
-		width: 13%;
+	.parcel-size {
+		width: 8%;
+
 	}
+
+	.label-pobox {
+		width: 20%;
+	}
+}
+
+.button-row {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 8px;
+
+	button {
+		background: $purple-accent;
+		color: white;
+	}
+}
+
+.sent {
+	pointer-events: none !important;
 }

@@ -1,11 +1,17 @@
 @import '../../../../../variables';
 
-.shipment {
+.label {
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	padding: 8px 0 8px 8px;
 	color: $black;
 	border-bottom: 1px dotted $light-gray;
+
+	div {
+		font-size: 16px;
+		text-align: center;
+	}
 
 	&:hover {
 		background: $white-hover;
@@ -17,56 +23,52 @@
 		align-items: center;
 		justify-content: space-between;
 
-		.shipment-name {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			width: 25%;
-
-			mat-icon {
-				color: $accent-primary;
-				margin-right: 10px;
-			}
-
-			.shipment-from {
-				width: 100%;
-				font-size: 18px;
-				font-weight: 500;
-			}
+		.label-icon {
+			color: $purple-accent;
+			margin-right: 10px;
+			width: 3%;
 		}
 
-		.tracking-number {
-			color: $text-secondary;
-			font-size: 14px;
-			width: 35%;
+		.label-addressee {
+			width: 24%;
+			font-weight: 500;
+		}
+
+		.label-id {
+			color: $purple-secondary;
+			width: 45%;
 			text-align: center;
 		}
-
 	}
 }
 
-.shipment-to {
-	width: 17%;
+.sent {
+	background: $light-gray-panel !important;
+	cursor: alias !important;
+
+	&:hover {
+		background: $light-gray-panel !important;
+	}
+
+	header {
+
+		.label-icon {
+			color: $dark-gray !important;
+		}
+
+		.label-id {
+			color: $light-gray !important;
+		}
+	}
+}
+
+.parcel-size {
+	width: 8%;
 	text-align: center;
 }
 
-.shipment-cash {
-	width: 10%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-}
-
-
-.shipment-eta {
-	width: 13%;
-
-	span {
-		font-size: 12px;
-		padding-left: 4px;
-		text-align: center;
-	}
+.po-box {
+	width: 20%;
 }
 
 .last {

@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    BASE_API_URL: 'https://infinite-hamlet-29399.herokuapp.com'
+    BASE_API_URL: 'https://package-json-corp-ws.herokuapp.com'
 };
 
 /*

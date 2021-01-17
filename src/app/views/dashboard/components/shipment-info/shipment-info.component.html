@@ -1,23 +1,19 @@
-<div class="shipment" [ngClass]="{'last': last}">
+<div class="label" [ngClass]="{'last': last, 'sent': label.sent === 'true'}">
 	<header>
-		<div class="shipment-name">
+		<div class="label-icon">
 			<mat-icon>local_shipping</mat-icon>
-			<div class="shipment-from">
-				{{shipment.from.city}}
-			</div>
 		</div>
-		<div class="tracking-number">
-			{{shipment.trackingNumber}}
+		<div class="label-id">
+			{{label.id}}
 		</div>
-		<div class="shipment-to">
-			{{shipment.to.city}}
+		<div class="label-addressee">
+			{{label.addressee}}
 		</div>
-		<div class="shipment-cash">
-			<span *ngIf="shipment.cashOnDelivery">${{shipment.cashOnDelivery}}</span>
-			<span *ngIf="!shipment.cashOnDelivery">---</span>
+		<div class="parcel-size">
+			{{label.size}}
 		</div>
-		<div class="shipment-eta">
-			{{getEtaDays(shipment.eta)}}<span>Days</span>
+		<div class="po-box">
+			{{label.poBox}}
 		</div>
 	</header>
 </div>

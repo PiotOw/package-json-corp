@@ -1,16 +1,29 @@
 <div class="shipments-list">
 	<div class="legend">
-		<div class="from">From</div>
-		<div class="tracking-number">Tracking Number</div>
-		<div class="to">To</div>
-		<div class="payment">Payment</div>
-		<div class="eta">ETA</div>
+		<div class="label-icon"></div>
+		<div class="label-id">ID</div>
+		<div class="label-addressee">Addressee</div>
+		<div class="parcel-size">Size</div>
+		<div class="label-pobox">P.O. Box</div>
 	</div>
 	<section>
-		<jsn-shipment-info
-			*ngFor="let shipment of SHIPMENTS; let last = last"
-			[shipment]="shipment"
-			[last]="last"
-		></jsn-shipment-info>
+		<div *ngFor="let label of LABELS; let last = last">
+			<jsn-shipment-info
+				[ngClass]="{'sent': label.sent === 'true'}"
+				[label]="label"
+				[last]="last"
+				[matMenuTriggerFor]="appMenu"
+			>
+			</jsn-shipment-info>
+			<mat-menu #appMenu="matMenu" xPosition="before">
+				<button [disabled]="label.sent === 'true'" mat-menu-item (click)="deleteLabel(label)">Delete</button>
+			</mat-menu>
+		</div>
 	</section>
+	<div class="button-row">
+		<button mat-raised-button color="accent" (click)="addNewLabel()">
+			Add new
+		</button>
+	</div>
 </div>
+

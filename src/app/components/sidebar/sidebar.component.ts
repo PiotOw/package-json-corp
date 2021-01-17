@@ -2,6 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {filter} from 'rxjs/operators';
 import {NavigationStart, Router} from '@angular/router';
 import {TabConfig} from '../../domain/tab-config';
+import {UserService} from '../../domain/user/services/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import {MessageDialogComponent} from '../../modules/message-dialog/message-dialog.component';
+import {LabelService} from '../../domain/label/services/label.service';
+import {LoginService} from '../../services/login-service';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
     selector: 'jsn-sidebar',
@@ -10,24 +16,41 @@ import {TabConfig} from '../../domain/tab-config';
 })
 export class SidebarComponent implements OnInit {
 
+    userLoggedIn: boolean;
+
+
     tabsConfig: TabConfig[] = [
         {
             label: 'Dashboard',
-            url: '',
+            url: 'sender/dashboard',
             active: false
         },
         {
+            label: 'Login',
+            url: 'sender/login',
+            active: false,
+        },
+        {
             label: 'Register',
-            url: 'sender/sign-up',
+            url: 'sender/register',
             active: false,
         }
 
     ];
+    TABS: TabConfig[] = this.tabsConfig;
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private userApi: UserService,
+                private dialog: MatDialog,
+                private labelsApi: LabelService,
+                private loginService: LoginService,
+                private auth: AuthService) {
     }
 
     ngOnInit() {
+        this.loginService.data$.subscribe(data => {
+            this.isLoggedIn(data.isLoggedIn);
+        });
         this.router.events
             .pipe(filter(event => event instanceof NavigationStart))
             .subscribe((event: NavigationStart) => {
@@ -50,4 +73,27 @@ export class SidebarComponent implements OnInit {
         this.router.navigate([link.url]);
     }
 
+    isLoggedIn(isLoggedIn) {
+        if (isLoggedIn) {
+            this.TABS = this.tabsConfig.slice(0, 1);
+            this.userLoggedIn = true;
+        } else {
+            this.TABS = this.tabsConfig.slice(1, 3);
+            this.userLoggedIn = false;
+        }
+    }
+
+    logout() {
+        const dialogRef = this.dialog.open(MessageDialogComponent);
+        dialogRef.componentInstance.loading = true;
+        this.auth.isAuthenticated$.subscribe(res => {
+            if (res) {
+                this.auth.logout({returnTo: document.location.origin});
+            }
+            this.userApi.logout();
+        });
+        dialogRef.componentInstance.loading = false;
+        dialogRef.componentInstance.message = 'You\'ve been successfully logged out';
+        this.router.navigate(['sender/login']);
+    }
 }

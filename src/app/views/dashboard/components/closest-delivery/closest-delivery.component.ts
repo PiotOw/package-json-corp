@@ -24,8 +24,6 @@ export class ClosestDeliveryComponent implements OnInit {
             this.data.push(new Date(shipment.eta).getTime() - today);
         }
         this.closestDelivery = Math.ceil(Math.min.apply(null, this.data) / (24 * 3600 * 1000));
-        console.log(this.data);
-        console.log(this.closestDelivery);
     }
 
 
